@@ -5,24 +5,23 @@ task = input("Enter your task: ")
 priority = input("Priority (high/medium/low): ").lower()
 time_bound = input("Is it time-bound? (yes/no): ").lower()
 
-# Step 2: Set base message using match case
+# Step 2: Match case and print directly
 match priority:
     case "high":
-        base = f"Reminder: '{task}' is a high priority task"
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a high priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a high priority task. Consider completing it when you have free time.")
     case "medium":
-        base = f"Reminder: '{task}' is a medium priority task"
+        if time_bound == "yes":
+            print(f"Reminder: '{task}' is a medium priority task that requires immediate attention today!")
+        else:
+            print(f"Reminder: '{task}' is a medium priority task. Consider completing it when you have free time.")
     case "low":
-        base = f"Note: '{task}' is a low priority task"
+        if time_bound == "yes":
+            print(f"Note: '{task}' is a low priority task that requires immediate attention today!")
+        else:
+            print(f"Note: '{task}' is a low priority task. Consider completing it when you have free time.")
     case _:
-        base = f"Note: '{task}' has an unknown priority level"
-
-# Step 3: Add time-sensitivity
-if time_bound == "yes":
-    base += " that requires immediate attention today!"
-else:
-    base += ". Consider completing it when you have free time."
-
-# Step 4: Output
-print()
-print(base)
+        print(f"Note: '{task}' has an unknown priority level. Please double-check your input.")
 
